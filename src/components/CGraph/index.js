@@ -35,9 +35,7 @@ const CGraph = props => {
       setOhlc(ohlc);
       setLoading(false);
     });
-  }, []);
-
-  console.log(Ohlc);
+  }, [props]);
 
   return (
     <div className="container">
