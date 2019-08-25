@@ -3,7 +3,7 @@ import Axios from "axios";
 import Chart from "react-apexcharts";
 import { Button } from "antd";
 
-import "antd/dist/antd.css";
+
 import "./index.css";
 
 let ohlc = [];
