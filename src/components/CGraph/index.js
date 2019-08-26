@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Chart from "react-apexcharts";
-import { Button } from "antd";
-
 
 import "./index.css";
 
