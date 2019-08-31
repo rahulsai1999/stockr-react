@@ -3,6 +3,10 @@ import Axios from "axios";
 import qs from "querystring";
 import _ from "lodash";
 
+import Button from "../components/Button";
+
+import "./index.css";
+
 let axiosconfig = {
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
@@ -32,15 +36,18 @@ class Login extends Component {
     let url = "http://localhost:5000/login";
 
     Axios.post(url, qs.stringify(credentials), axiosconfig).then(response => {
-      console.log(response.data);
-      _.has(response.data, "error")
-        ? this.setState({ message: "Invalid Credentials" })
-        : window.localStorage.setItem("token", response.data.token);
-      this.setState({ message: "Logged In" });
+      if (_.has(response.data, "error"))
+        this.setState({ message: "Invalid Credentials" });
+      else {
+        window.localStorage.setItem("token", response.data.token);
+        this.setState({ message: "Logged In" });
+        window.location.assign("/");
+      }
     });
   };
 
   render() {
+    const { message } = this.state;
     return (
       <div>
         <h3>Login</h3>
@@ -57,9 +64,9 @@ class Login extends Component {
             placeholder="Password"
             onChange={this.onChangePassword}
           ></input>
-          <div onClick={this.onLogin}>Login</div>
+          <Button onClick={this.onLogin}>Login</Button>
           <br></br>
-          <div>{this.state.message}</div>
+          <div>{message}</div>
         </form>
       </div>
     );
