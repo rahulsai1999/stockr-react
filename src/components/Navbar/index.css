@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css?family=Manjari&display=swap");
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  font-family: "Manjari", sans-serif;
+  font-size: 18px;
+}
+
+.left-section {
+  margin-right: 5%;
+}
+
+.right-section {
+  margin-left: 11%;
+}
+
+.nav-link {
+  margin: 17px;
+  padding: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link-center{
+  margin: 1%;
+  padding: 1%;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:hover {
+  background-color: white;
+  color: black;
+}
+
+.btn-green {
+  background-color: yellowgreen;
+}
+
+.btn-violet {
+  background-color: blueviolet;
+}

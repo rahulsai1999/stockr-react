@@ -1,7 +1,6 @@
 import React from "react";
-// import CGraph from "../components/CGraph";
-
-
+import CGraph from "../components/CGraph";
+import Navbar from "../components/Navbar";
 
 const Stock = props => {
   const { match } = props;
@@ -9,8 +8,8 @@ const Stock = props => {
 
   return (
     <div>
-      <h3>{params.id}</h3>
-      {/* <CGraph ticker="MSFT"></CGraph> */}
+      <Navbar></Navbar>
+      <CGraph ticker={params.id}></CGraph>
     </div>
   );
 };

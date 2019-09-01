@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import Navbar from "../components/Navbar";
 let axiosconfig = {};
 
 class Home extends Component {
@@ -28,6 +29,7 @@ class Home extends Component {
 
   onlogout = () => {
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("usernameStockR");
     this.setState({ loggedin: false });
   };
 
@@ -35,6 +37,7 @@ class Home extends Component {
     const { user, loggedin } = this.state;
     return (
       <div>
+        <Navbar></Navbar>
         <h3>Home Page</h3>
         {loggedin ? <div>Hello {user}</div> : null}
         <button onClick={this.onlogout}>Logout</button>

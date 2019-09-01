@@ -40,6 +40,7 @@ class Login extends Component {
         this.setState({ message: "Invalid Credentials" });
       else {
         window.localStorage.setItem("token", response.data.token);
+        window.localStorage.setItem("usernameStockR", credentials.username);
         this.setState({ message: "Logged In" });
         window.location.assign("/");
       }

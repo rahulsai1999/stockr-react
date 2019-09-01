@@ -38,7 +38,7 @@ const CGraph = props => {
   return (
     <div className="container">
       {loading ? (
-        <Button type="danger" shape="circle" loading />
+        <div>Loading...</div>
       ) : (
         <div>
           <Chart
