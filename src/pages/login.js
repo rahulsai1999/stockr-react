@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import qs from "querystring";
+import cogotoast from "cogo-toast";
 import _ from "lodash";
 
 import "./index.css";
@@ -15,7 +16,7 @@ let axiosconfig = {
 class Login extends Component {
   constructor() {
     super();
-    this.state = { username: "", password: "", message: "" };
+    this.state = { username: "", password: "", message: "", isLoading: false };
   }
 
   onChangeUserName = event => {
@@ -35,12 +36,16 @@ class Login extends Component {
 
     Axios.post(url, qs.stringify(credentials), axiosconfig).then(response => {
       if (_.has(response.data, "error"))
-        this.setState({ message: "Invalid Credentials" });
+        cogotoast.error("Invalid Credentials", { position: "top-center" });
       else {
         window.localStorage.setItem("token", response.data.token);
         window.localStorage.setItem("usernameStockR", credentials.username);
-        this.setState({ message: "Logged In" });
-        window.location.assign("/");
+        cogotoast.loading("Logging in", { position: "top-center" }).then(() => {
+          cogotoast.success("Logged In", { position: "top-center" });
+        });
+        setTimeout(() => {
+          window.location.assign("/");
+        }, 4000);
       }
     });
   };
@@ -53,6 +58,7 @@ class Login extends Component {
           <h1>Login</h1>
           <input
             type="text"
+            autoComplete="off"
             className="login-form-element"
             name="username"
             placeholder="Username"
