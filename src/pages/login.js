@@ -3,8 +3,6 @@ import Axios from "axios";
 import qs from "querystring";
 import _ from "lodash";
 
-import Button from "../components/Button";
-
 import "./index.css";
 
 let axiosconfig = {
@@ -33,7 +31,7 @@ class Login extends Component {
       password: this.state.password
     };
 
-    let url = "http://localhost:5000/login";
+    let url = "https://mainapu.herokuapp.com/login";
 
     Axios.post(url, qs.stringify(credentials), axiosconfig).then(response => {
       if (_.has(response.data, "error"))
@@ -50,11 +48,12 @@ class Login extends Component {
   render() {
     const { message } = this.state;
     return (
-      <div>
-        <h3>Login</h3>
-        <form>
+      <div className="login-container">
+        <div className="login-container-c">
+          <h1>Login</h1>
           <input
             type="text"
+            className="login-form-element"
             name="username"
             placeholder="Username"
             onChange={this.onChangeUserName}
@@ -62,13 +61,16 @@ class Login extends Component {
           <input
             type="password"
             name="password"
+            className="login-form-element"
             placeholder="Password"
             onChange={this.onChangePassword}
           ></input>
-          <Button onClick={this.onLogin}>Login</Button>
+          <button className="login-button" onClick={this.onLogin}>
+            Login
+          </button>
           <br></br>
           <div>{message}</div>
-        </form>
+        </div>
       </div>
     );
   }

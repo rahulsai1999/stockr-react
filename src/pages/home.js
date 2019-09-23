@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Axios from "axios";
+
 import Navbar from "../components/Navbar";
+import Autocom from "../components/Autocom";
+
+import "./index.css";
+
 let axiosconfig = {};
 
 class Home extends Component {
@@ -18,7 +23,7 @@ class Home extends Component {
         }
       };
 
-      let url = "http://localhost:5000/current";
+      let url = "https://mainapu.herokuapp.com/current";
 
       Axios.get(url, axiosconfig).then(response => {
         const { data } = response;
@@ -38,9 +43,12 @@ class Home extends Component {
     return (
       <div>
         <Navbar></Navbar>
-        <h3>Home Page</h3>
-        {loggedin ? <div>Hello {user}</div> : null}
-        <button onClick={this.onlogout}>Logout</button>
+        {/* <Autocom /> */}
+        <div class="container">
+          <h3>Home Page</h3>
+          {loggedin ? <div>Hello {user}</div> : null}
+          <button onClick={this.onlogout}>Logout</button>
+        </div>
       </div>
     );
   }
