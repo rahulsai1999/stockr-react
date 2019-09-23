@@ -16,7 +16,7 @@ let axiosconfig = {
 class Login extends Component {
   constructor() {
     super();
-    this.state = { username: "", password: "", message: "", isLoading: false };
+    this.state = { username: "", password: "" };
   }
 
   onChangeUserName = event => {
@@ -51,7 +51,6 @@ class Login extends Component {
   };
 
   render() {
-    const { message } = this.state;
     return (
       <div className="login-container">
         <div className="login-container-c">
@@ -75,7 +74,6 @@ class Login extends Component {
             Login
           </button>
           <br></br>
-          <div>{message}</div>
         </div>
       </div>
     );

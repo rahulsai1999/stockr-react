@@ -9,6 +9,12 @@ body {
 .ct-text-group {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
+  margin-top: 5px;
+}
+
+.form-links {
+  text-decoration: none;
+  color: violet;
 }
 
 .login-container {
@@ -54,6 +60,30 @@ body {
 }
 
 .login-button:hover {
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+}
+
+.signup-button {
+  font-family: "Manjari", sans-serif;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  background-color: #21d4fd;
+  background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+  color: white;
+  height: 50px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
   background-color: #ff3cac;
   background-image: linear-gradient(
     225deg,
