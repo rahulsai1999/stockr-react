@@ -1,6 +1,18 @@
 import React from "react";
 import _ from "lodash";
+import cogotoast from "cogo-toast";
 import "./index.css";
+
+const onlogout = () => {
+  window.localStorage.removeItem("token");
+  window.localStorage.removeItem("usernameStockR");
+  cogotoast.loading("Logging out", { position: "top-right" }).then(() => {
+    cogotoast.success("Redirecting ", { position: "top-right" });
+  });
+  setTimeout(() => {
+    window.location.assign("/");
+  }, 4000);
+};
 
 const Navbar = props => {
   const username = window.localStorage.getItem("usernameStockR");
@@ -24,9 +36,13 @@ const Navbar = props => {
       <div className="right-section">
         {username ? (
           <>
-            <a className="nav-link" href="/account">
-              {username}
-            </a>
+            <div class="dropdown">
+              <button class="dropbtn">{username}</button>
+              <div class="dropdown-content">
+                <a href="/account">Account</a>
+                <a onClick={onlogout}>Logout</a>
+              </div>
+            </div>
           </>
         ) : (
           <>

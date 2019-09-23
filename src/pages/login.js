@@ -73,7 +73,14 @@ class Login extends Component {
           <button className="login-button" onClick={this.onLogin}>
             Login
           </button>
-          <br></br>
+          <br />
+          <br />
+          <h4>
+            Don't have an Account?{" "}
+            <a class="form-links" href="/signup">
+              Signup
+            </a>
+          </h4>
         </div>
       </div>
     );

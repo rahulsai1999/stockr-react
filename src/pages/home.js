@@ -32,22 +32,15 @@ class Home extends Component {
     }
   }
 
-  onlogout = () => {
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem("usernameStockR");
-    this.setState({ loggedin: false });
-  };
-
   render() {
     const { user, loggedin } = this.state;
     return (
       <div>
-        <Navbar></Navbar>
+        <Navbar />
         {/* <Autocom /> */}
         <div class="container">
           <h3>Home Page</h3>
           {loggedin ? <div>Hello {user}</div> : null}
-          <button onClick={this.onlogout}>Logout</button>
         </div>
       </div>
     );
