@@ -18,27 +18,27 @@ const Navbar = props => {
   const username = window.localStorage.getItem("usernameStockR");
 
   return (
-    <div className="navbar">
-      <div className="left-section">
-        <a className="nav-link" href="/">
+    <div className="navbar-custom">
+      <div className="left-section-custom">
+        <a className="nav-link-custom" href="/">
           Home
         </a>
-        <a className="nav-link" href="/news">
+        <a className="nav-link-custom" href="/news">
           News
         </a>
-        <a className="nav-link" href="/stocks">
+        <a className="nav-link-custom" href="/stocks">
           Stocks
         </a>
       </div>
-      <a className="nav-link-center" href="/">
+      <a className="nav-link-custom-center" href="/">
         <h2>Stockr</h2>
       </a>
-      <div className="right-section">
+      <div className="right-section-custom">
         {username ? (
           <>
-            <div class="dropdown">
-              <button class="dropbtn">{username}</button>
-              <div class="dropdown-content">
+            <div class="dropdown-custom">
+              <button class="dropbtn-custom">{username}</button>
+              <div class="dropdown-content-custom">
                 <a href="/account">Account</a>
                 <a onClick={onlogout}>Logout</a>
               </div>
@@ -46,10 +46,10 @@ const Navbar = props => {
           </>
         ) : (
           <>
-            <a className="nav-link btn-green" href="/login">
+            <a className="nav-link-custom btn-green" href="/login">
               Login
             </a>
-            <a className="nav-link btn-violet" href="/signup">
+            <a className="nav-link-custom btn-violet" href="/signup">
               Signup
             </a>
           </>

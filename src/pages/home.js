@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 
 import Navbar from "../components/Navbar";
-import Autocom from "../components/Autocom";
+import NewsComp from "../components/NewsComp";
 
 import "./index.css";
 
@@ -36,11 +36,10 @@ class Home extends Component {
     const { user, loggedin } = this.state;
     return (
       <div>
-        <Navbar />
-        {/* <Autocom /> */}
-        <div class="container">
-          <h3>Home Page</h3>
+        <Navbar></Navbar>
+        <div>
           {loggedin ? <div>Hello {user}</div> : null}
+          <NewsComp company="apple" />
         </div>
       </div>
     );
