@@ -38,7 +38,6 @@ class Home extends Component {
       <div>
         <Navbar></Navbar>
         <div>
-          {loggedin ? <div>Hello {user}</div> : null}
           <NewsComp company="apple" />
         </div>
       </div>

@@ -36,6 +36,7 @@ const NewsComp = props => {
                 title={element.title}
                 desc={element.description}
                 author={element.source.name}
+                link={element.url}
               />
             );
           })}
