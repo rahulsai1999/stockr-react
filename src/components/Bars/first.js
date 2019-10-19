@@ -30,7 +30,7 @@ const First = props => {
   } = companyInfo;
 
   return (
-    <div className="container">
+    <div style={{marginLeft:70}} className="container">
       {loading ? (
         <div style={{ color: "white" }}>Loading...</div>
       ) : (

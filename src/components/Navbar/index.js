@@ -2,6 +2,7 @@ import React from "react";
 import _ from "lodash";
 import cogotoast from "cogo-toast";
 import "./index.css";
+import Timer from "../Bars/timer";
 
 const onlogout = () => {
   window.localStorage.removeItem("token");
@@ -18,42 +19,47 @@ const Navbar = props => {
   const username = window.localStorage.getItem("usernameStockR");
 
   return (
-    <div className="navbar-custom">
-      <div className="left-section-custom">
-        <a className="nav-link-custom" href="/">
-          Home
+    <div className="packing-custom">
+      <div className="navbar-custom">
+        <div className="left-section-custom">
+          <a className="nav-link-custom" href="/">
+            Home
+          </a>
+          <a className="nav-link-custom" href="/news">
+            News
+          </a>
+          <a className="nav-link-custom" href="/stocks">
+            Stocks
+          </a>
+        </div>
+        <a className="nav-link-custom-center" href="/">
+          <h2>Stockr</h2>
         </a>
-        <a className="nav-link-custom" href="/news">
-          News
-        </a>
-        <a className="nav-link-custom" href="/stocks">
-          Stocks
-        </a>
-      </div>
-      <a className="nav-link-custom-center" href="/">
-        <h2>Stockr</h2>
-      </a>
-      <div className="right-section-custom">
-        {username ? (
-          <>
-            <div class="dropdown-custom">
-              <button class="dropbtn-custom">{username}</button>
-              <div class="dropdown-content-custom">
-                <a href="/account">Account</a>
-                <a onClick={onlogout}>Logout</a>
+        <div className="right-section-custom">
+          {username ? (
+            <>
+              <div class="dropdown-custom">
+                <button class="dropbtn-custom">{username}</button>
+                <div class="dropdown-content-custom">
+                  <a href="/account">Account</a>
+                  <a onClick={onlogout}>Logout</a>
+                </div>
               </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <a className="nav-link-custom btn-green" href="/login">
-              Login
-            </a>
-            <a className="nav-link-custom btn-violet" href="/signup">
-              Signup
-            </a>
-          </>
-        )}
+            </>
+          ) : (
+            <>
+              <a className="nav-link-custom btn-green" href="/login">
+                Login
+              </a>
+              <a className="nav-link-custom btn-violet" href="/signup">
+                Signup
+              </a>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="timer-custom">
+        <Timer />
       </div>
     </div>
   );
