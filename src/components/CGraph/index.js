@@ -36,7 +36,10 @@ const CGraph = props => {
   }, [props]);
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{ position: "relative", left: -25, top: -16 }}
+    >
       {loading ? (
         <div>Loading...</div>
       ) : (

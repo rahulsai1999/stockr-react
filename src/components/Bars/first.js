@@ -7,6 +7,7 @@ const aritekey = "&client_id=2e2fbd86b906b31d3342b9686161637b01df05942e02";
 const First = props => {
   const [companyInfo, setCInfo] = useState({});
   const [loading, setL] = useState(true);
+  const [toggle, setToggle] = useState(false);
   useEffect(() => {
     Axios.get(
       "https://cloud.iexapis.com/stable/stock/" +
@@ -46,26 +47,40 @@ const First = props => {
             <div className="col-3">
               <h5>{sector}</h5>
             </div>
-          </div>
-          <br />
-          <br />
-          <div className="row">
-            <div className="col-9">{description}</div>
-            <div className="col-3">
-              <img
-                height={200}
-                width={200}
-                src={
-                  "https://api.ritekit.com/v1/images/logo?domain=" +
-                  website +
-                  aritekey
-                }
-              />
+            <div className="col-2">
+              <div
+                className="btn-green"
+                onClick={() => {
+                  setToggle(!toggle);
+                }}
+              >
+                Show More
+              </div>
             </div>
           </div>
           <br />
           <br />
-          <div className="row">
+
+          {toggle ? (
+            <div className="row animated slideInRight">
+              <div className="col-9">{description}</div>
+              <div className="col-3">
+                <img
+                  height={200}
+                  width={200}
+                  src={
+                    "https://api.ritekit.com/v1/images/logo?domain=" +
+                    website +
+                    aritekey
+                  }
+                />
+              </div>
+            </div>
+          ) : null}
+
+          <br />
+          <br />
+          <div className="row justify-content-center">
             <CGraph ticker={props.ticker}></CGraph>
           </div>
         </div>
