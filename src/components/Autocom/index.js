@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import _ from "lodash";
 
 class Autocom extends Component {
   constructor(props) {
@@ -8,24 +9,25 @@ class Autocom extends Component {
   }
 
   onChangeText = event => {
-    let url =
-      "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=";
-    let cred = "&apikey=T69K620H31T06293";
-    Axios.get(url + event.target.value + cred)
-      .then(response => {
-        const { data } = response;
-        console.log(data);
-        this.setState({ api: data });
-        this.setState({ loading: false });
-      })
-      .catch(() => {
-        this.setState({ loading: false });
-      });
+    if (event.target.value != "" && event.target.value.length > 3) {
+      let url =
+        "https://www.alphavantage.co/query?apikey=T69K620H31T06293&function=SYMBOL_SEARCH&keywords=";
+      Axios.get(url + event.target.value)
+        .then(response => {
+          const { data } = response;
+          this.setState({ api: data });
+          this.setState({ loading: false });
+        })
+        .catch(() => {
+          this.setState({ loading: false });
+        });
+    }
   };
 
   render() {
     const { api, loading } = this.state;
     const { bestMatches } = api;
+    console.log(bestMatches);
     return (
       <div>
         <input
@@ -34,11 +36,13 @@ class Autocom extends Component {
         ></input>
         <div>
           {!loading
-            ? bestMatches.forEach(element => {
+            ? bestMatches.map(element => {
                 return (
                   <>
-                    <div>{element["1. symbol"]}</div>
-                    <div>{element["2. name"]}</div>
+                    <div style={{ color: "white" }}>
+                      {element["1. symbol"]}&nbsp;
+                      {element["2. name"]}
+                    </div>
                   </>
                 );
               })
