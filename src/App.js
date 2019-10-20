@@ -6,6 +6,7 @@ import Stock from "./pages/stock";
 import News from "./pages/news";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import Test from "./pages/test";
 
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/news" component={News} />
         <Route path="/stock/:id" component={Stock} />
+        <Route path="/test" component={Test} />
       </Router>
     </div>
   );
