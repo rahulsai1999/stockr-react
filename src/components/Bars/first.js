@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import Axios from "axios";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import CGraph from "../CGraph";
 const aritekey = "&client_id=2e2fbd86b906b31d3342b9686161637b01df05942e02";
@@ -30,9 +31,14 @@ const First = props => {
   } = companyInfo;
 
   return (
-    <div style={{marginLeft:70}} className="container">
+    <div style={{ marginLeft: 70 }} className="container">
       {loading ? (
-        <div style={{ color: "white" }}>Loading...</div>
+        <BeatLoader
+          loading={loading}
+          size={20}
+          sizeUnit={"px"}
+          color={"#BD10E0"}
+        />
       ) : (
         <div className="container-fluid" style={{ color: "white" }}>
           <div className="row">
