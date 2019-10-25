@@ -42,12 +42,12 @@ const First = props => {
       ) : (
         <div className="container-fluid" style={{ color: "white" }}>
           <div className="row">
-            <div className="col-5">
+            <div className="col-4">
               <h4>
                 {companyName}&nbsp;({symbol})
               </h4>
             </div>
-            <div className="col-4">
+            <div className="col-3">
               <h5>{exchange}</h5>
             </div>
             <div className="col-3">
@@ -56,6 +56,7 @@ const First = props => {
             <div className="col-2">
               <div
                 className="btn-green"
+                style={{ cursor: "pointer", textAlign: "center" }}
                 onClick={() => {
                   setToggle(!toggle);
                 }}

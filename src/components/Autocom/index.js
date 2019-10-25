@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import _ from "lodash";
+import "./index.css";
 
 class Autocom extends Component {
   constructor(props) {
@@ -34,19 +35,37 @@ class Autocom extends Component {
           placeholder="Enter Search Query"
           onChange={this.onChangeText}
         ></input>
-        <div>
-          {!loading
-            ? bestMatches.map(element => {
-                return (
-                  <>
-                    <div style={{ color: "white" }}>
-                      {element["1. symbol"]}&nbsp;
-                      {element["2. name"]}
+        <div className="container">
+          <div className="row mt-4 justify-content-center">
+            {!loading
+              ? bestMatches.map(element => {
+                  return (
+                    <div className="card">
+                      <div className="card-body">
+                        <h5 className="card-title">{element["1. symbol"]}</h5>
+                        <h6 className="card-subtitle mb-2 text-muted">
+                          {element["2. name"]}
+                        </h6>
+                        <p className="card-text">{element["3. type"]}</p>
+                        <p className="card-text">{element["4. region"]}</p>
+                        <a
+                          href={"/stock/" + element["1. symbol"]}
+                          className="card-link"
+                        >
+                          View More
+                        </a>
+                        <a
+                          href={"/stock/" + element["1. symbol"]}
+                          className="card-link"
+                        >
+                          Add Stock
+                        </a>
+                      </div>
                     </div>
-                  </>
-                );
-              })
-            : null}
+                  );
+                })
+              : null}
+          </div>
         </div>
       </div>
     );
