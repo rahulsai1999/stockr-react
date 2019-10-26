@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import Axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
 
+import Second from "./second";
 import CGraph from "../CGraph";
 const aritekey = "&client_id=2e2fbd86b906b31d3342b9686161637b01df05942e02";
 
@@ -84,6 +85,12 @@ const First = props => {
               </div>
             </div>
           ) : null}
+
+          <br />
+
+          <div className="row">
+            <Second ticker={props.ticker} />
+          </div>
 
           <br />
           <br />
