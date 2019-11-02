@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import NewsComp from "../components/NewsComp";
 
 import "./index.css";
+import Portfolio from "../components/Portfolio";
 
 let axiosconfig = {};
 
@@ -38,6 +39,8 @@ class Home extends Component {
       <div>
         <Navbar></Navbar>
         <div>
+          {loggedin ? <Portfolio /> : null}
+          <br />
           <NewsComp />
         </div>
       </div>
