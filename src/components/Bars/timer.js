@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import moment from "moment";
 
 const Timer = props => {
+  const userName = window.localStorage.getItem("usernameStockR");
   let initTime = moment().format("MMMM Do YYYY, h:mm:ss a");
   const [time, setTime] = useState(initTime);
   setInterval(() => {
@@ -11,7 +12,19 @@ const Timer = props => {
 
   return (
     <div>
-      <p style={{color:'red',marginLeft:20,fontSize:18}}>{time}</p>
+      {userName ? (
+        <p
+          style={{
+            color: "red",
+            marginLeft: 125,
+            fontSize: 18
+          }}
+        >
+          {time}
+        </p>
+      ) : (
+        <p style={{ color: "red", marginLeft: 27, fontSize: 18 }}>{time}</p>
+      )}
     </div>
   );
 };

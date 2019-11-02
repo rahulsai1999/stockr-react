@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 const Card = props => {
-  const { src, title, desc, author, url } = props;
+  const { src, title, desc, author, link } = props;
   return (
     <div className="card mb-6">
       <div className="row no-gutters">
@@ -12,7 +12,7 @@ const Card = props => {
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{desc}</p>
-            <a href={url} class="stretched-link"></a>
+            <a className="stretched-link" href={link}></a>
             <p className="card-text">
               <small className="text-muted">{author}</small>
             </p>

@@ -52,27 +52,27 @@ const Portfolio = props => {
         <BeatLoader />
       ) : (
         <>
-          <div>Hello {username}</div>
-          <br />
           <div className="card-deck">
             {user.map(stock => {
               return (
                 <div
-                  className="card bg-success text-white"
+                  className="card bg-dark text-white text-center"
                   style={{ width: 200 }}
                 >
                   <div className="card-body">
-                    <div className="card-title text-center">
+                    <div className="card-title">
                       <h4>{stock}</h4>
                     </div>
                     <a
                       href={"/stock/" + stock}
-                      className="card-link text-white"
+                      className="btn btn-success text-white"
                     >
                       View
                     </a>
+                    &nbsp;&nbsp;
                     <a
-                      className="card-link text-white"
+                      className="btn btn-danger text-white"
+                      style={{ cursor: "pointer" }}
                       onClick={() => {
                         rmStock(stock);
                       }}
