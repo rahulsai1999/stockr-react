@@ -3,7 +3,9 @@ import Axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
 
 import Second from "./second";
+import Third from "./third";
 import CGraph from "../CGraph";
+import NewsComp from "../NewsComp";
 const aritekey = "&client_id=2e2fbd86b906b31d3342b9686161637b01df05942e02";
 
 const First = props => {
@@ -88,14 +90,27 @@ const First = props => {
 
           <br />
 
-          <div className="row">
+          <div className="row justify-content-center">
             <Second ticker={props.ticker} />
+          </div>
+
+          <br />
+
+          <div className="row justify-content-center">
+            <Third ticker={props.ticker} />
+          </div>
+
+          <br />
+          <br />
+
+          <div className="row justify-content-center">
+            <CGraph ticker={props.ticker}></CGraph>
           </div>
 
           <br />
           <br />
           <div className="row justify-content-center">
-            <CGraph ticker={props.ticker}></CGraph>
+            <NewsComp ticker={props.ticker}></NewsComp>
           </div>
         </div>
       )}

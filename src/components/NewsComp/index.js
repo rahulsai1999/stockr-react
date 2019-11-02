@@ -12,9 +12,8 @@ const NewsComp = props => {
   useEffect(() => {
     const { company } = props;
     Axios.get(
-      "https://newsapi.org/v2/everything?q=" +
+      "https://newsapi.org/v2/everything?from=2019-10-27&sortBy=popularity&q=" +
         company +
-        "&from=2019-10-10&to=2019-10-10&sortBy=popularity" +
         apiKey
     ).then(response => {
       const { articles } = response.data;

@@ -2,19 +2,25 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
 
-const Second = props => {
+const Third = props => {
   const [sData, setSData] = useState({});
+  const [nData, setNData] = useState({});
   const [loading, setL] = useState(true);
 
   useEffect(() => {
-    Axios.get(
-      "https://www.alphavantage.co/query?apikey=T69K620H31T06293&function=GLOBAL_QUOTE&symbol=" +
-        props.ticker
-    ).then(response => {
-      setSData(response.data["Global Quote"]);
-      setL(false);
-      console.log(sData);
-    });
+    Axios.get("http://139.59.83.182:8000/stockpr/" + props.ticker).then(
+      response => {
+        setSData(response.data);
+        console.log(sData);
+      }
+    );
+    Axios.get("http://139.59.83.182:8000/nlp/" + props.ticker).then(
+      response => {
+        setNData(response.data);
+        setL(false);
+        console.log(nData);
+      }
+    );
   }, []);
 
   return (
@@ -33,23 +39,7 @@ const Second = props => {
               className="card text-white bg-success text-center"
               style={{ padding: 5 }}
             >
-              Open: {sData["02. open"]}
-            </div>
-          </div>
-          <div className="col-3 text-center">
-            <div
-              className="card text-white bg-warning text-center"
-              style={{ padding: 5 }}
-            >
-              High: {sData["03. high"]}
-            </div>
-          </div>
-          <div className="col-3 text-center">
-            <div
-              className="card text-white bg-warning text-center"
-              style={{ padding: 5 }}
-            >
-              Low: {sData["04. low"]}
+              Predicted Open: {parseFloat(sData["last"]).toFixed(3)}
             </div>
           </div>
           <div className="col-3 text-center">
@@ -57,7 +47,23 @@ const Second = props => {
               className="card text-white bg-danger text-center"
               style={{ padding: 5 }}
             >
-              Close: {sData["05. price"]}
+              Predicted Close: {parseFloat(sData["next"]).toFixed(3)}
+            </div>
+          </div>
+          <div className="col-3 text-center">
+            <div
+              className="card text-white bg-success text-center"
+              style={{ padding: 5 }}
+            >
+              Positive Sentiment: {(parseFloat(nData["p"]) * 100).toFixed(0)} %
+            </div>
+          </div>
+          <div className="col-3 text-center">
+            <div
+              className="card text-white bg-danger text-center"
+              style={{ padding: 5 }}
+            >
+              Negative Sentiment: {(parseFloat(nData["n"]) * 100).toFixed(0)} %
             </div>
           </div>
         </>
@@ -66,4 +72,4 @@ const Second = props => {
   );
 };
 
-export default Second;
+export default Third;
