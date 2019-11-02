@@ -38,7 +38,7 @@ class Home extends Component {
       <div>
         <Navbar></Navbar>
         <div>
-          <NewsComp company="apple" />
+          <NewsComp />
         </div>
       </div>
     );

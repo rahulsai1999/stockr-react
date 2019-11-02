@@ -3,18 +3,16 @@ import Axios from "axios";
 import Card from "./card";
 import BeatLoader from "react-spinners/BeatLoader";
 
-const apiKey = "&apiKey=a0e21d414ee443c79dbd5e0e3cc16bf6";
-
 const NewsComp = props => {
   const [newsData, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { company } = props;
+    const company = props.company ? "&q=" + props.company : "";
+    console.log(company);
     Axios.get(
-      "https://newsapi.org/v2/everything?from=2019-10-27&sortBy=popularity&q=" +
-        company +
-        apiKey
+      "https://newsapi.org/v2/top-headlines?from=2019-10-27&category=business&country=us&sortBy=popularity&apiKey=a0e21d414ee443c79dbd5e0e3cc16bf6" +
+        company
     ).then(response => {
       const { articles } = response.data;
       console.log(articles);
