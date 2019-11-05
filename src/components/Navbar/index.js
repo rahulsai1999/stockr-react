@@ -28,7 +28,7 @@ const Navbar = props => {
           <a className="nav-link-custom" href="/news">
             News
           </a>
-          <a className="nav-link-custom" href="/stocks">
+          <a className="nav-link-custom" href="/test">
             Stocks
           </a>
         </div>
